@@ -58,6 +58,7 @@ class SpiceNotificationsController
 
         $db->query("INSERT INTO spicenotifications (id, bean_module, bean_id, created_by, user_id, notification_date, notification_type)
                 VALUES ('{$args['id']}', '{$params['beanModule']}', '{$params['beanId']}', '{$current_user->id}', '{$params['userId']}', '{$params['notificationDate']}', '{$params['notificationType']}')");
+        return $res->withJson(['success' => true]);
     }
 
     /**

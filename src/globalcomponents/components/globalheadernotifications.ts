@@ -7,13 +7,25 @@ import {userpreferences} from "../../services/userpreferences.service";
 import {modal} from "../../services/modal.service";
 import {subscription} from "../../services/subscription.service";
 import {Router} from "@angular/router";
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 /**
  * display notifications on the global header
  */
 @Component({
     selector: 'global-header-notifications',
-    templateUrl: '../templates/globalheadernotifications.html'
+    templateUrl: '../templates/globalheadernotifications.html',
+    animations: [
+        trigger('animatenotifications', [
+            transition(':enter', [
+              style({ opacity: 0 }),
+              animate('300ms', style({ opacity: 1 })),
+            ]),
+            transition(':leave', [
+              animate('100ms', style({ opacity: 0 }))
+            ])
+          ]),
+    ]
 })
 export class GlobalHeaderNotifications {
     /**

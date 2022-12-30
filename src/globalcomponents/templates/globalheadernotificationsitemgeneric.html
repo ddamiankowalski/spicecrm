@@ -1,7 +1,7 @@
 <div *ngIf="!asBox; else boxContainer" class="slds-media slds-has-flexi-truncate slds-p-around_x-small">
     <div class="slds-media__figure">
         <span *ngIf="notification.bean_module" class="slds-icon_container" style="width:40px;height:40px;">
-            <system-icon icon="all"></system-icon>
+            <system-icon [icon]="notification.bean_module || 'all'"></system-icon>
         </span>
     </div>
     <div class="slds-media__body">

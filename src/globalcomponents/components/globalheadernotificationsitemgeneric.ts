@@ -1,7 +1,7 @@
 /**
  * @module GlobalComponents
  */
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {NotificationI} from "../../services/interfaces.service";
 import {notification} from "../../services/notification.service";
 
@@ -10,9 +10,10 @@ import {notification} from "../../services/notification.service";
  */
 @Component({
     selector: 'global-header-notifications-item-generic',
-    templateUrl: '../templates/globalheadernotificationsitemgeneric.html'
+    templateUrl: '../templates/globalheadernotificationsitemgeneric.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GlobalHeaderNotificationsItemGeneric {
+export class GlobalHeaderNotificationsItemGeneric implements OnInit {
     /**
      * holds the notification data
      */
@@ -21,6 +22,10 @@ export class GlobalHeaderNotificationsItemGeneric {
      * if true render the box template for new pushed notifications
      */
     @Input() public asBox: boolean = false;
+
+    ngOnInit(): void {
+        console.log(this.notification)
+    }
 
     constructor(public notificationService: notification) {
     }
